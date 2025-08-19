@@ -14,9 +14,6 @@ public class PlaneGeneration : MonoBehaviour
     private Vector2[] uvs;
     private int verticiesLength = 0;
 
-    [SerializeField] private Transform debugSphere;
-    [SerializeField] private bool isUpdatingOnCPU = false;
-
 
     // Start is called before the first frame update
     void Start()
@@ -27,22 +24,6 @@ public class PlaneGeneration : MonoBehaviour
 
         UpdatePlaneVerticies();
         UpdateMesh();
-    }
-
-    private void FixedUpdate() {
-
-        if (isUpdatingOnCPU)
-        {
-            UpdatePlaneVerticies();
-            UpdateMesh();
-        }
-
-        if (debugSphere != null) 
-        {
-            Vector3 newPos = debugSphere.position;
-            newPos.y = OceanManager.Instance.WaterHeightAtPosition(newPos) + transform.position.y;
-            debugSphere.position = newPos;
-        }
     }
 
     void UpdatePlaneVerticies()

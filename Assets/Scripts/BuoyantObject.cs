@@ -6,16 +6,16 @@ public class BuoyantObject : MonoBehaviour
     [SerializeField] private Transform[] _floatPoints;
 
     [SerializeField] private float _underWatrerDrag = 3f;
-    [SerializeField] private float _underWaterAngularDrag = 1f;
-    [SerializeField] private float _surfaceDrag = 0.1f;
-    [SerializeField] private float _surfaceAngularDrag = 0.05f;
+    [SerializeField] private float _underWaterAngularDrag = 3f;
+    [SerializeField] private float _surfaceDrag = 1f;
+    [SerializeField] private float _surfaceAngularDrag = 0.5f;
     [SerializeField] private float _floatingPower = 15f;
     [SerializeField] private float _waterLevel = 0f;
 
     Rigidbody _rigidbody;
     int _floatPointsUnderwater;
 
-    bool _isUnderWater;
+    public bool IsUnderWater;
 
     void Awake()
     {
@@ -33,24 +33,24 @@ public class BuoyantObject : MonoBehaviour
             {
                 _rigidbody.AddForceAtPosition(Vector3.up * _floatingPower * Mathf.Abs(difference), point.position, ForceMode.Force);
                 _floatPointsUnderwater++;
-                if (!_isUnderWater)
+                if (!IsUnderWater)
                 {
-                    _isUnderWater = true;
+                    IsUnderWater = true;
                     SwitchState(true);
                 }
             }
         }
 
-        if (_isUnderWater && _floatPointsUnderwater == 0)
+        if (IsUnderWater && _floatPointsUnderwater == 0)
         {
-            _isUnderWater = false;
+            IsUnderWater = false;
             SwitchState(false);
         }
     }
 
     void SwitchState(bool underwater)
     {
-        if(_isUnderWater)
+        if(IsUnderWater)
         {
             _rigidbody.linearDamping = _underWatrerDrag;
             _rigidbody.angularDamping = _underWaterAngularDrag;

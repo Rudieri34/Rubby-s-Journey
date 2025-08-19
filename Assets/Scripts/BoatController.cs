@@ -1,62 +1,85 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Simple boat controller using Unity's New Input System.
-/// Requires Rigidbody and some drag settings for water resistance.
-/// Combine with BuoyantObjectWaves.cs or BuoyantObject.cs for floating.
-/// </summary>
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(BuoyantObject))]
 public class BoatController : MonoBehaviour
 {
+    private BuoyantObject _buoyantObject;
+
     [Header("Movement")]
-    public float acceleration = 50f;    // forward thrust power
-    public float steering = 30f;        // yaw torque
-    public float maxSpeed = 10f;        // clamps top speed
+    [SerializeField] private float _acceleration = 30f;    // thrust strength
+    [SerializeField] private float _reverseAcceleration = 15f; // weaker reverse power
+    [SerializeField] private float _steering = 25f;        // turning torque
+    [SerializeField] private float _maxSpeed = 12f;        // forward speed cap
+    [SerializeField] private float _maxReverseSpeed = 5f;  // reverse speed cap
+    [SerializeField] private float _throttleChangeRate = 2f; // how fast throttle changes
+    [SerializeField] private float _brakeDrag = 0.8f;      // braking slowdown factor
 
-    [Header("Water Resistance")]
-    public float waterLinearDrag = 0.5f;
-    public float waterAngularDrag = 0.3f;
+    private Rigidbody _rb;
+    private BoatControls _controls;
+    private Vector2 _moveInput;
 
-    private Rigidbody rb;
-    private BoatControls controls;
-    private Vector2 moveInput;
+    private float _currentThrottle = 0f; // -1 (full reverse) to 1 (full forward)
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
+        _buoyantObject = GetComponent<BuoyantObject>();
 
-        controls = new BoatControls();
-        controls.Boat.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        controls.Boat.Move.canceled += ctx => moveInput = Vector2.zero;
+        _controls = new BoatControls();
+        _controls.Player.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
+        _controls.Player.Move.canceled += ctx => _moveInput = Vector2.zero;
     }
 
-    void OnEnable()
-    {
-        controls.Boat.Enable();
-    }
-
-    void OnDisable()
-    {
-        controls.Boat.Disable();
-    }
+    void OnEnable() => _controls.Player.Enable();
+    void OnDisable() => _controls.Player.Disable();
 
     void FixedUpdate()
     {
-        // Forward/backward throttle
-        Vector3 forwardForce = transform.forward * (moveInput.y * acceleration);
-        rb.AddForce(forwardForce, ForceMode.Force);
-
-        // Steering (yaw rotation torque)
-        float turn = moveInput.x * steering;
-        rb.AddTorque(Vector3.up * turn, ForceMode.Force);
-
-        // Limit max speed
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-        if (flatVel.magnitude > maxSpeed)
+        if (_buoyantObject.IsUnderWater)
         {
-            Vector3 limitedVel = flatVel.normalized * maxSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            HandleThrottle();
+            ApplyForces();
+        }
+    }
+
+    private void HandleThrottle()
+    {
+        // Smoothly change throttle toward input.y (-1 to 1)
+        float targetThrottle = _moveInput.y;
+        _currentThrottle = Mathf.MoveTowards(_currentThrottle, targetThrottle, Time.fixedDeltaTime * _throttleChangeRate);
+
+        // Apply natural braking when no throttle input
+        if (Mathf.Approximately(targetThrottle, 0f) && Mathf.Abs(_currentThrottle) < 0.05f)
+        {
+            _currentThrottle = 0f;
+            _rb.linearVelocity *= (1f - Time.fixedDeltaTime * _brakeDrag); // smooth stop
+        }
+    }
+
+    private void ApplyForces()
+    {
+        // Forward/reverse force
+        float thrust = (_currentThrottle > 0f) ? _acceleration : _reverseAcceleration;
+        Vector3 forwardForce = transform.forward * (_currentThrottle * thrust);
+        _rb.AddForce(forwardForce, ForceMode.Force);
+
+        // Steering (yaw torque only when moving)
+        if (Mathf.Abs(_currentThrottle) > 0.05f)
+        {
+            float turn = _moveInput.x * _steering;
+            _rb.AddTorque(Vector3.up * turn, ForceMode.Force);
+        }
+
+        // Limit max speed (different for forward/reverse)
+        Vector3 flatVel = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
+        float speedLimit = (_currentThrottle >= 0f) ? _maxSpeed : _maxReverseSpeed;
+
+        if (flatVel.magnitude > speedLimit)
+        {
+            Vector3 limitedVel = flatVel.normalized * speedLimit;
+            _rb.linearVelocity = new Vector3(limitedVel.x, _rb.linearVelocity.y, limitedVel.z);
         }
     }
 }
