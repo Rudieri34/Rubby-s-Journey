@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class GameManager : SingletonBase<GameManager>
 {
-    public bool IsGamePaused { get; private set; } = false;
-    public bool IsMovementAllowed { get; private set; } = false;
+    public bool IsGamePaused = false;
+    public bool IsMovementAllowed = false;
 
     public bool TogglePause()
     {
