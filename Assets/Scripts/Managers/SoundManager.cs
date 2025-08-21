@@ -3,9 +3,13 @@ using UnityEngine;
 using System.Linq;
 using InnominatumDigital.Base;
 using Unity.VisualScripting;
+using UnityEngine.Audio;
+using DG.Tweening;
 
 public class SoundManager : SingletonBase<SoundManager>
 {
+    [SerializeField] private AudioMixer _mainMixer;
+
     [Header("SFX")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioDataSO _sfxAudioData;
@@ -26,7 +30,7 @@ public class SoundManager : SingletonBase<SoundManager>
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
-        AddAllMusicToPlaylist();
+        Instance.PlayAudioLoop("lofi");
     }
 
     private void Update()
@@ -133,6 +137,11 @@ public class SoundManager : SingletonBase<SoundManager>
     {
         _musicPlaylist.Clear();
         _musicPlaylist = _musicAudioData.GetAudioList().ToList();
+    }
+
+    public void FadeSound()
+    {
+        _mainMixer.DOSetFloat("Master", -80f, 1f);
     }
 }
 

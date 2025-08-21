@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioType: 2
   _audioList:
-  - audioName: Click1
+  - audioName: Type
     audio: {fileID: 8300000, guid: e65afc8f2f40a6e41b50e0fda30e2dab, type: 3}
+    pitch: 1
+    volume: 1
+  - audioName: cargo_spawn
+    audio: {fileID: 8300000, guid: bf84c8f103dc6f84a9ff1f7c7e608a4f, type: 3}
     pitch: 1
     volume: 1

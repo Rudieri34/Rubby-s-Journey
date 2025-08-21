@@ -39,6 +39,9 @@ public class GameManager : SingletonBase<GameManager>
 
     public void ReloadScene()
     {
+        DialogManager.Instance.HideDialog();
+
+
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }

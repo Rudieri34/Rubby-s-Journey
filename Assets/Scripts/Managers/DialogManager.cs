@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using InnominatumDigital.Base;
 using System;
 using System.Collections;
@@ -7,6 +8,7 @@ using System.IO;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class DialogManager : SingletonBase<DialogManager>
@@ -16,10 +18,14 @@ public class DialogManager : SingletonBase<DialogManager>
 
     public string LanguageSel = "ENGLISH";
 
+    [SerializeField] private Image _fadeImage;
+
+    [SerializeField] private TMP_ColorGradient _playerColor;
+    [SerializeField] private TMP_ColorGradient _npcColor;
     [SerializeField] private TMP_Text _gameDialog;
 
 
-    public string GetFilePath( string jsonFileName)
+    public string GetFilePath(string jsonFileName)
     {
 #if UNITY_EDITOR
         return Path.Combine(Application.dataPath, "StreamingAssets", jsonFileName);
@@ -75,5 +81,22 @@ public class DialogManager : SingletonBase<DialogManager>
         _gameDialog.text = "";
         _gameDialog.gameObject.SetActive(false);
     }
+    public void SetTextColor(bool isPlayer)
+    {
+        if (isPlayer)
+        {
+            _gameDialog.colorGradientPreset = _playerColor;
+        }
+        else
+        {
+            _gameDialog.colorGradientPreset = _npcColor;
+        }
+    }
 
+    public void FadeOut()
+    {
+        _fadeImage.gameObject.SetActive(true);
+        _fadeImage.DOFade(1, 1f);
+        SoundManager.Instance.FadeSound();
+    }
 }

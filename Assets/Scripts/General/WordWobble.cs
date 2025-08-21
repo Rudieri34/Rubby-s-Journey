@@ -51,6 +51,7 @@ public class WordWobble : MonoBehaviour
             vertices[index + 3] += offset;
         }
 
+        /*
         Color[] colors = mesh.colors;
         for (int w = 0; w < wordIndexes.Count; w++)
         {
@@ -70,12 +71,9 @@ public class WordWobble : MonoBehaviour
 
 
             }
-        }
-
-
-
+        }*/
         mesh.vertices = vertices;
-        mesh.colors = colors;
+        //mesh.colors = colors;
         textMesh.canvasRenderer.SetMesh(mesh);
     }
 

@@ -44,3 +44,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957aa5d53cd406c4bab5ca2a49cf43ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Quests:
+  - Cargo: {fileID: 5902589055178339577, guid: 89b104effb6032248ad4687c0e4ff6fe, type: 3}
+    Descriptions:
+    - Hey Rubby, another day delivering stuff right?
+    - At this point you already know how it works
+    - 'The destination is marked with smoke as always '
+    - Remember, your service is really important to us
+    - Our remote villages would never exist without you
+    - So take care of yourself
+    - And do not let stuff fall on the sea
+    - Here, take the cargo, this one is really heavy
+    Destination: {x: 23.1, y: 2.7, z: 133.3}
+    OceanConditions:
+      WaveHeight: 0.8
+      WaveSpeed: 0.04
+      WaveSpeed2: 0.01
+      WaveFrequency: 0.01
+    PlayerSpeaking: 0
+  - Cargo: {fileID: 850192646190678208, guid: b8d5b873286773b4184e12c62ca07429, type: 3}
+    Descriptions:
+    - Rubby!! long time no see
+    - Bringing the good stuff, right?
+    - Thanks as always, and watch out, the wind is getting stronger
+    - Anyway, I need you to deliver stuff to the guy in the lighthouse, please
+    - Those are supplies for the week, he really needs it
+    Destination: {x: 268.1, y: 2.7, z: -191.2}
+    OceanConditions:
+      WaveHeight: 2
+      WaveSpeed: 0.04
+      WaveSpeed2: 0.01
+      WaveFrequency: 0.01
+    PlayerSpeaking: 0
+  - Cargo: {fileID: 8165888044706006460, guid: 4b72fa4a093dae2439404b31c919c663, type: 3}
+    Descriptions:
+    - Hello Rubby, thanks for that
+    - I was already getting hungry
+    - Can you do me a favor?
+    - Take this gift and deliver it to the maid that lives on that rich guy island
+    - 'I''m kinda into her '
+    - And watch out, the wind is changing
+    Destination: {x: 238.1, y: 2.7, z: 20.300003}
+    OceanConditions:
+      WaveHeight: 1
+      WaveSpeed: 0.04
+      WaveSpeed2: 0.01
+      WaveFrequency: 0.01
+    PlayerSpeaking: 0
+  - Cargo: {fileID: 4994855966226268871, guid: 35fc1348033116b45ab3a976238c7b63, type: 3}
+    Descriptions:
+    - Hi Mr. Rubby
+    - Is this for me? How sweet
+    - From the guy in the lighthouse? Well, I'll pay him a visit someday
+    - For now, can you deliver this to my boss? He is in the archipelago looking
+      for treasures
+    Destination: {x: -108.5, y: 2.7, z: -152}
+    OceanConditions:
+      WaveHeight: 1.5
+      WaveSpeed: 0.04
+      WaveSpeed2: 0.01
+      WaveFrequency: 0.01
+    PlayerSpeaking: 0
+  - Cargo: {fileID: 0}
+    Descriptions:
+    - Thank you for your work sir
+    - It was a long day huh
+    - I think is time for you to go home
+    - Farewell
+    Destination: {x: -92.8, y: 2.7, z: -432.2}
+    OceanConditions:
+      WaveHeight: 0.5
+      WaveSpeed: 0.04
+      WaveSpeed2: 0.01
+      WaveFrequency: 0.01
+    PlayerSpeaking: 0
+  QuestGoalMarkerPrefab: {fileID: 6018780748811344432, guid: 31cbd52dad88ed8409d9dfe252b83055, type: 3}

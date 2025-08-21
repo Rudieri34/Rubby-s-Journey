@@ -69,6 +69,8 @@ public class QuestGoalController : MonoBehaviour
         float overlapVolume = xOverlap * yOverlap * zOverlap;
         float playerVolume = a.size.x * a.size.y * a.size.z;
 
+        Debug.Log(playerVolume > 0 ? overlapVolume / playerVolume : 0f);
+
         return playerVolume > 0 ? overlapVolume / playerVolume : 0f;
     }
 }

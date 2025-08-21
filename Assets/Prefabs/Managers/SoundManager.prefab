@@ -49,11 +49,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dontDestroyOnLoad: 1
+  _mainMixer: {fileID: 24100000, guid: 648af024a1dd2734f93fd2503767585c, type: 2}
   sfxSource: {fileID: 4038050660498479382}
-  _sfxAudioData: {fileID: 11400000, guid: dc482a81e3f32d949af0ea9fac17ec41, type: 2}
+  _sfxAudioData: {fileID: 11400000, guid: a0f3579d53a11a5479c480144add97e2, type: 2}
   _ambienceAudioPrefab: {fileID: 1590567928682041031, guid: 8416947905f24df4eb854ef75607f77c, type: 3}
   _musicSource: {fileID: 7425063034030145288}
-  _musicAudioData: {fileID: 11400000, guid: e69f285b04ca9de49bbe0a40340fec6e, type: 2}
+  _musicAudioData: {fileID: 11400000, guid: c58f005e81557f84bae5812de5cb5182, type: 2}
 --- !u!82 &4038050659114938455
 AudioSource:
   m_ObjectHideFlags: 0

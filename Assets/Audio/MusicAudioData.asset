@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: MusicAudioData
   m_EditorClassIdentifier: 
   _audioType: 0
-  _audioList: []
+  _audioList:
+  - audioName: lofi
+    audio: {fileID: 8300000, guid: 65125e3a30b39d74982f6986556b1d42, type: 3}
+    pitch: 1
+    volume: 0.2
