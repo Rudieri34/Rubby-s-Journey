@@ -5,12 +5,15 @@ public class BuoyantObject : MonoBehaviour
 {
     [SerializeField] private Transform[] _floatPoints;
 
+
     [SerializeField] private float _underWatrerDrag = 3f;
     [SerializeField] private float _underWaterAngularDrag = 3f;
     [SerializeField] private float _surfaceDrag = 1f;
     [SerializeField] private float _surfaceAngularDrag = 0.5f;
     [SerializeField] private float _floatingPower = 15f;
     [SerializeField] private float _waterLevel = 0f;
+
+
 
     Rigidbody _rigidbody;
     int _floatPointsUnderwater;
@@ -61,4 +64,6 @@ public class BuoyantObject : MonoBehaviour
             _rigidbody.angularDamping = _surfaceAngularDrag;
         }
     }
+
+
 }

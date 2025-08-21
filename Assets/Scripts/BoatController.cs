@@ -5,7 +5,12 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(BuoyantObject))]
 public class BoatController : MonoBehaviour
 {
+    public static BoatController Instance { get; private set; }
+
     private BuoyantObject _buoyantObject;
+
+    [Header("Cargo Spawn Point")]
+    [SerializeField] private Transform _cargoSpawnPoint;
 
     [Header("Movement")]
     [SerializeField] private float _acceleration = 30f;    // thrust strength
@@ -16,6 +21,10 @@ public class BoatController : MonoBehaviour
     [SerializeField] private float _throttleChangeRate = 2f; // how fast throttle changes
     [SerializeField] private float _brakeDrag = 0.8f;      // braking slowdown factor
 
+
+
+    GameObject _currentCargo;
+
     private Rigidbody _rb;
     private BoatControls _controls;
     private Vector2 _moveInput;
@@ -24,6 +33,8 @@ public class BoatController : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
+
         _rb = GetComponent<Rigidbody>();
         _buoyantObject = GetComponent<BuoyantObject>();
 
@@ -37,6 +48,12 @@ public class BoatController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(GameManager.Instance.IsGamePaused || !GameManager.Instance.IsMovementAllowed)
+        {
+            _currentThrottle = 0f; // reset throttle when game is paused or movement is not allowed
+            return;
+        }
+
         if (_buoyantObject.IsUnderWater)
         {
             HandleThrottle();
@@ -81,5 +98,12 @@ public class BoatController : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * speedLimit;
             _rb.linearVelocity = new Vector3(limitedVel.x, _rb.linearVelocity.y, limitedVel.z);
         }
+    }
+
+
+    public void SetNewCargo(GameObject cargo)
+    {
+        GameObject newCargo = Instantiate(cargo, _cargoSpawnPoint.position, _cargoSpawnPoint.rotation);
+        _currentCargo = newCargo;
     }
 }
