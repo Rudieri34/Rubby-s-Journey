@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8125117598104612264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbeef83615bc47b4c9a37dd6a11a7a09, type: 3}
+  m_Name: WorldBendRendererFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  bendMaterial: {fileID: 2100000, guid: 7aa8b8532958fc348b61246815017273, type: 2}
 --- !u!114 &-7825662825854217861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,9 +300,17 @@ MonoBehaviour:
   m_Name: SnapshotRenderer
   m_EditorClassIdentifier: 
   debugShaders:
-    debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7,
-      type: 3}
+    debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
+    probeVolumeSamplingDebugComputeShader: {fileID: 7200000, guid: 53626a513ea68ce47b59dc1299fe3959, type: 3}
+  probeVolumeResources:
+    probeVolumeDebugShader: {fileID: 0}
+    probeVolumeFragmentationDebugShader: {fileID: 0}
+    probeVolumeOffsetDebugShader: {fileID: 0}
+    probeVolumeSamplingDebugShader: {fileID: 0}
+    probeSamplingDebugMesh: {fileID: 0}
+    probeSamplingDebugTexture: {fileID: 0}
+    probeVolumeBlendStatesCS: {fileID: 0}
   m_RendererFeatures:
   - {fileID: 5350561443530724216}
   - {fileID: -6887599022104968138}
@@ -326,28 +348,10 @@ MonoBehaviour:
   - {fileID: -5730367267010588496}
   - {fileID: 4206371795540755951}
   - {fileID: -5729723407990804162}
-  m_RendererFeatureMap: 78d38cce4803414a739462fee233629768a8aef10c68ae04b4276e989d51a57ef63c606327a6f503f672f5dedca6c0c5efc56d9adc08603a3eb177f5eaee7bb0
+  m_RendererFeatureMap: 78d38cce4803414a36041b742e556aa06a7a631e957c9aae0dec4d720cb0cad08069ea8ee8d69b5fbb38659bd94191975284c2d8cdc347f87bd1fa3c1fa96593ae674894a1adcf2364f091f7dcf8fe6da4242bb6b8859978e78da21f8b37bbc2df17032e4f2abec47e7aa3278210d2b5834c0f16e4a056ca9433e6b83dfef3e2e18f73f0195e9304b3f9ff1dd76382cdff53f1d66e7e15e96478ed90d2b5e0bdddf2867f1dea609922a41fb9587c8ddec2ca14a411964c3c7dd8dd46f898556783e96896daa781feb16406e39fcc537114323a94ac4f7ccda9507365935b53256fb70c300ecc916547c788eb9577c26b257c4846ae630834739462fee2336297f63c606327a6f503b0d04ed954a579b0efc56d9adc08603a3eb177f5eaee7bb0
   m_UseNativeRenderPass: 0
+  xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
-  xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
-  shaders:
-    blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
-    copyDepthPS: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
-    screenSpaceShadowPS: {fileID: 4800000, guid: 0f854b35a0cf61a429bd5dcfea30eddd,
-      type: 3}
-    samplingPS: {fileID: 4800000, guid: 04c410c9937594faa893a11dceb85f7e, type: 3}
-    stencilDeferredPS: {fileID: 4800000, guid: e9155b26e1bc55942a41e518703fe304, type: 3}
-    fallbackErrorPS: {fileID: 4800000, guid: e6e9a19c3678ded42a3bc431ebef7dbd, type: 3}
-    fallbackLoadingPS: {fileID: 4800000, guid: 7f888aff2ac86494babad1c2c5daeee2, type: 3}
-    materialErrorPS: {fileID: 4800000, guid: 5fd9a8feb75a4b5894c241777f519d4e, type: 3}
-    coreBlitPS: {fileID: 4800000, guid: 93446b5c5339d4f00b85c159e1159b7c, type: 3}
-    coreBlitColorAndDepthPS: {fileID: 4800000, guid: d104b2fc1ca6445babb8e90b0758136b,
-      type: 3}
-    blitHDROverlay: {fileID: 4800000, guid: a89bee29cffa951418fc1e2da94d1959, type: 3}
-    cameraMotionVector: {fileID: 4800000, guid: c56b7e0d4c7cb484e959caeeedae9bbf,
-      type: 3}
-    objectMotionVector: {fileID: 4800000, guid: 7b3ede40266cd49a395def176e1bc486,
-      type: 3}
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
@@ -366,6 +370,8 @@ MonoBehaviour:
   m_RenderingMode: 0
   m_DepthPrimingMode: 0
   m_CopyDepthMode: 0
+  m_DepthAttachmentFormat: 0
+  m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
 --- !u!114 &285316839509081334

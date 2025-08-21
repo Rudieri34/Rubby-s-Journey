@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8337617260367401609
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 1
+  temperature:
+    m_OverrideState: 0
+    m_Value: 0
+  tint:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &-5938372075733675468
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693a2db7bfb07904b81fcc3c73a50679, type: 3}
+  m_Name: SNESSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  renderPassEvent:
+    m_OverrideState: 1
+    m_Value: 550
+  enabled:
+    m_OverrideState: 1
+    m_Value: 1
+  bandingValues:
+    m_OverrideState: 1
+    m_Value: 16
+  powerRamp:
+    m_OverrideState: 1
+    m_Value: 1.15
 --- !u!114 &-5685806241698309588
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -12,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   skipIterations:
     m_OverrideState: 1
     m_Value: 1
@@ -24,7 +68,7 @@ MonoBehaviour:
     m_Value: 0.5
   scatter:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.5
   clamp:
     m_OverrideState: 1
     m_Value: 65472
@@ -68,62 +112,16 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 1
   outlineColor:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
   backgroundColor:
     m_OverrideState: 0
     m_Value: {r: 0, g: 0, b: 0, a: 1}
   useSceneColor:
     m_OverrideState: 1
     m_Value: 1
---- !u!114 &-4195747528641698626
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd486065ce11414fa40e631affc4900, type: 3}
-  m_Name: ProbeVolumesOptions
-  m_EditorClassIdentifier: 
-  active: 0
-  normalBias:
-    m_OverrideState: 1
-    m_Value: 0.05
-  viewBias:
-    m_OverrideState: 1
-    m_Value: 0.1
-  scaleBiasWithMinProbeDistance:
-    m_OverrideState: 1
-    m_Value: 0
-  samplingNoise:
-    m_OverrideState: 1
-    m_Value: 0.1
-  animateSamplingNoise:
-    m_OverrideState: 1
-    m_Value: 1
-  leakReductionMode:
-    m_OverrideState: 1
-    m_Value: 2
-  minValidDotProductValue:
-    m_OverrideState: 1
-    m_Value: 0.1
-  occlusionOnlyReflectionNormalization:
-    m_OverrideState: 1
-    m_Value: 1
-  intensityMultiplier:
-    m_OverrideState: 0
-    m_Value: 1
-  skyOcclusionIntensityMultiplier:
-    m_OverrideState: 0
-    m_Value: 1
-  worldOffset:
-    m_OverrideState: 0
-    m_Value: {x: 0, y: 0, z: 0}
 --- !u!114 &-3889755850792509621
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -138,11 +136,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   renderPassEvent:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 550
   intensity:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 1
 --- !u!114 &-3469906554342560962
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -155,16 +153,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   postExposure:
     m_OverrideState: 1
     m_Value: 0.22
   contrast:
     m_OverrideState: 1
-    m_Value: 30
+    m_Value: 50
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
   hueShift:
     m_OverrideState: 1
     m_Value: 0
@@ -189,10 +187,10 @@ MonoBehaviour:
     m_Value: 2
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 145
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 30
+    m_Value: 200
   gaussianMaxRadius:
     m_OverrideState: 1
     m_Value: 1
@@ -229,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2016444ba6c8d3e4f98d2e10ef0946e1, type: 3}
   m_Name: BarrelDistortionSettings
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   renderPassEvent:
     m_OverrideState: 0
     m_Value: 550
@@ -238,7 +236,23 @@ MonoBehaviour:
     m_Value: 0.2
   backgroundColor:
     m_OverrideState: 1
-    m_Value: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &-1157429111704751494
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.085
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,15 +266,15 @@ MonoBehaviour:
   m_Name: CRT Screen
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 4796443300841382945}
   - {fileID: -3889755850792509621}
   - {fileID: 1610644621157835047}
   - {fileID: -1837707743951835610}
-  - {fileID: -4195747528641698626}
   - {fileID: -3469906554342560962}
   - {fileID: -5685806241698309588}
   - {fileID: -2026426859613223684}
   - {fileID: -5004655222096279730}
+  - {fileID: -5938372075733675468}
+  - {fileID: -1157429111704751494}
 --- !u!114 &1610644621157835047
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -273,39 +287,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198f564c29551fb45b39bbb7dc02b0de, type: 3}
   m_Name: ScanlinesSettings
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   renderPassEvent:
-    m_OverrideState: 0
-    m_Value: 550
+    m_OverrideState: 1
+    m_Value: 1000
   scanlineTex:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 99239520169780b4cadf2c961020e675, type: 3}
     dimension: 1
   strength:
     m_OverrideState: 1
-    m_Value: 0.625
+    m_Value: 0.061
   size:
     m_OverrideState: 1
-    m_Value: 6
+    m_Value: 8
   scrollSpeed:
     m_OverrideState: 1
     m_Value: 1
---- !u!114 &4796443300841382945
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b52e5c16327dbe943b312dcaf1208cc3, type: 3}
-  m_Name: PixelateSettings
-  m_EditorClassIdentifier: 
-  active: 0
-  renderPassEvent:
-    m_OverrideState: 0
-    m_Value: 550
-  pixelSize:
-    m_OverrideState: 1
-    m_Value: 4

@@ -19,6 +19,7 @@ public class PlaneGeneration : MonoBehaviour
     void Start()
     {
         mesh = new Mesh();
+        mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
         GetComponent<MeshFilter>().mesh = mesh;
         verticiesLength = (Size + 1) * (Size + 1);
 
