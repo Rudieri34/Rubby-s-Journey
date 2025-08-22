@@ -57,7 +57,7 @@ MonoBehaviour:
     - Here, take the cargo, this one is really heavy
     Destination: {x: 23.1, y: 2.7, z: 133.3}
     OceanConditions:
-      WaveHeight: 0.8
+      WaveHeight: 0.65
       WaveSpeed: 0.04
       WaveSpeed2: 0.01
       WaveFrequency: 0.01
@@ -71,7 +71,7 @@ MonoBehaviour:
     - Those are supplies for the week, he really needs it
     Destination: {x: 268.1, y: 2.7, z: -191.2}
     OceanConditions:
-      WaveHeight: 2
+      WaveHeight: 1.5
       WaveSpeed: 0.04
       WaveSpeed2: 0.01
       WaveFrequency: 0.01
@@ -100,7 +100,7 @@ MonoBehaviour:
       for treasures
     Destination: {x: -108.5, y: 2.7, z: -152}
     OceanConditions:
-      WaveHeight: 1.5
+      WaveHeight: 1.8
       WaveSpeed: 0.04
       WaveSpeed2: 0.01
       WaveFrequency: 0.01
