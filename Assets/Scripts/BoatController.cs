@@ -61,6 +61,12 @@ public class BoatController : MonoBehaviour
 
     void OnEnable()
     {
+        if(PlayerPrefs.GetInt("CurrentQuestIndex") != 0)
+        {
+            transform.position = QuestManager.Instance.Quests[PlayerPrefs.GetInt("CurrentQuestIndex") - 1].Destination;
+        }
+
+
         _controls.Player.Enable();
         if (_engineAudioSource != null && !_engineAudioSource.isPlaying)
             _engineAudioSource.Play();

@@ -28,7 +28,17 @@ public class QuestManager : MonoBehaviour
         Instance = this;
 
         await UniTask.WaitForSeconds(2);
-        SetQuest(0);
+
+        if (PlayerPrefs.GetInt("CurrentQuestIndex") != 0)
+        {
+            SetQuest(PlayerPrefs.GetInt("CurrentQuestIndex"));
+            _currentQuestIndex = PlayerPrefs.GetInt("CurrentQuestIndex");
+        }
+        else
+        {
+            SetQuest(0);
+
+        }
     }
 
     async void SetQuest(int index)
@@ -43,7 +53,7 @@ public class QuestManager : MonoBehaviour
         }
         DialogManager.Instance.HideDialog();
 
-        if(Quests[index].Cargo != null)
+        if (Quests[index].Cargo != null)
         {
             BoatController.Instance.SetNewCargo(Quests[index].Cargo);
         }
@@ -65,6 +75,7 @@ public class QuestManager : MonoBehaviour
 
         GameManager.Instance.SetMovementAllowed(false);
 
+
         DialogManager.Instance.SetTextColor(true);
         if (_currentQuestIndex < Quests.Length - 1)
         {
@@ -73,6 +84,7 @@ public class QuestManager : MonoBehaviour
             BoatController.Instance.CleanCargo();
 
             _currentQuestIndex++;
+            PlayerPrefs.SetInt("CurrentQuestIndex", _currentQuestIndex);
             SetQuest(_currentQuestIndex);
         }
         else
@@ -89,7 +101,13 @@ public class QuestManager : MonoBehaviour
 
 
             Debug.Log("All quests completed!");
-            
+
         }
+    }
+
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("CurrentQuestIndex", 0);
     }
 }
