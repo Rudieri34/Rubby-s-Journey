@@ -669,8 +669,8 @@ MonoBehaviour:
   _engineAudioSource: {fileID: 3689102750249422159}
   _minPitch: 0.5
   _maxPitch: 3
-  _minVolume: 0
-  _maxVolume: 0.3
+  _minVolume: 0.1
+  _maxVolume: 0.5
   _engineLerpSpeed: 0.94
 --- !u!54 &5332485389867350837
 Rigidbody:
