@@ -43,7 +43,7 @@ MonoBehaviour:
     m_Value: 16
   powerRamp:
     m_OverrideState: 1
-    m_Value: 1.15
+    m_Value: 1.1
 --- !u!114 &-5685806241698309588
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -91,6 +91,25 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-5566937437194298790
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52e5c16327dbe943b312dcaf1208cc3, type: 3}
+  m_Name: PixelateSettings
+  m_EditorClassIdentifier: 
+  active: 0
+  renderPassEvent:
+    m_OverrideState: 1
+    m_Value: 550
+  pixelSize:
+    m_OverrideState: 1
+    m_Value: 2
 --- !u!114 &-5004655222096279730
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -275,6 +294,7 @@ MonoBehaviour:
   - {fileID: -5004655222096279730}
   - {fileID: -5938372075733675468}
   - {fileID: -1157429111704751494}
+  - {fileID: -5566937437194298790}
 --- !u!114 &1610644621157835047
 MonoBehaviour:
   m_ObjectHideFlags: 3
